@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+/* Identidade visual da CLOTHESTORE */
+@theme {
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+  --font-sans: "Inter", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-white text-black antialiased;
+  }
+}
