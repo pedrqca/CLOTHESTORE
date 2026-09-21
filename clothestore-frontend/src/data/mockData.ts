@@ -1,11 +1,41 @@
 import type { Category, Product } from '../types';
+import tshirtImage from '../assets/TSHIRT.jpg';
+import hoodieImage from '../assets/HOODIES.jpg';
+import pantsImage from '../assets/PANTS.jpg';
+import jacketsImage from '../assets/JACKETS.jpg';
+import accessoriesImage from '../assets/ACESSORIES.jpg';
 
 export const categories: Category[] = [
-    { id: '1', name: 'T-Shirts', slug: 't-shirts', image: 'https://placehold.co/600x800/111111/EEEEEE?text=T-SHIRTS' },
-    { id: '2', name: 'Hoodies', slug: 'hoodies', image: 'https://placehold.co/600x800/111111/EEEEEE?text=HOODIES' },
-    { id: '3', name: 'Pants', slug: 'pants', image: 'https://placehold.co/600x800/111111/EEEEEE?text=PANTS' },
-    { id: '4', name: 'Jackets', slug: 'jackets', image: 'https://placehold.co/600x800/111111/EEEEEE?text=JACKETS' },
-    { id: '5', name: 'Accessories', slug: 'accessories', image: 'https://placehold.co/600x800/111111/EEEEEE?text=ACCESSORIES' },
+    {
+        id: '1',
+        name: 'T-Shirts',
+        slug: 't-shirts',
+        image: tshirtImage,
+    },
+    {
+        id: '2',
+        name: 'Hoodies',
+        slug: 'hoodies',
+        image: hoodieImage,
+    },
+    {
+        id: '3',
+        name: 'Pants',
+        slug: 'pants',
+        image: pantsImage,
+    },
+    {
+        id: '4',
+        name: 'Jackets',
+        slug: 'jackets',
+        image: jacketsImage,
+    },
+    {
+        id: '5',
+        name: 'Accessories',
+        slug: 'accessories',
+        image: accessoriesImage,
+    },
 ];
 
 export const products: Product[] = [

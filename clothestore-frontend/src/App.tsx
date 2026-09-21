@@ -1,9 +1,20 @@
+import { AnnouncementBar } from './components/layout/AnnouncementBar';
+import { Header } from './components/layout/Header';
+import { Hero } from './components/layout/Hero';
+import { ShopByCategories } from './components/home/ShopByCategories';
+
 export function App() {
   return (
-    <div className="flex min-h-screen items-center justify-center">
-      <h1 className="text-4xl font-bold tracking-tighter">CLOTHESTORE</h1>
+    <div className="min-h-screen bg-white">
+      <AnnouncementBar />
+      <Header />
+
+      <main>
+        <Hero />
+        <ShopByCategories />
+      </main>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

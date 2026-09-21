@@ -5,6 +5,7 @@
   --color-black: #000000;
   --color-white: #FFFFFF;
   --font-sans: "Inter", sans-serif;
+  --font-outfit: "Outfit", sans-serif;
 }
 
 @layer base {
