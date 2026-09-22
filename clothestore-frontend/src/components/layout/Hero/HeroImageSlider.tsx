@@ -1,9 +1,9 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
-import heroImage from './CLOTHESTORE-HEADER.jpg';
-import heroImage2 from './CLOTHESTORE-HEADER-2.jpg';
-import heroImage3 from './CLOTHESTORE-HEADER-3.jpg';
+import heroImage from '../../../assets/hero/CLOTHESTORE-HEADER.jpg';
+import heroImage2 from '../../../assets/hero/CLOTHESTORE-HEADER-2.jpg';
+import heroImage3 from '../../../assets/hero/CLOTHESTORE-HEADER-3.jpg';
 
 const heroImages = [
     heroImage,

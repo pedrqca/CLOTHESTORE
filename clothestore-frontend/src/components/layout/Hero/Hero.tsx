@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { HeroImageSlider } from './HeroSlider/HeroImageSlider';
+import { HeroImageSlider } from './HeroImageSlider';
 
 export default function Hero() {
     return (

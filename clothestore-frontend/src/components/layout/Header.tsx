@@ -14,7 +14,6 @@ import { products } from '../../data/mockData';
 const navItems = [
     { label: 'HOME', path: '/' },
     { label: 'SHOP', path: '/shop' },
-    { label: 'COLLECTIONS', path: '/collections' },
     { label: 'ABOUT', path: '/about' },
 ];
 
