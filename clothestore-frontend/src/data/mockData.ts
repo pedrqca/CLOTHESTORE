@@ -1,9 +1,12 @@
 import type { Category, Product } from '../types';
-import tshirtImage from '../assets/TSHIRT.jpg';
-import hoodieImage from '../assets/HOODIES.jpg';
-import pantsImage from '../assets/PANTS.jpg';
-import jacketsImage from '../assets/JACKETS.jpg';
-import accessoriesImage from '../assets/ACESSORIES.jpg';
+
+import tshirtImage from '../assets/SBCimages/TSHIRT.jpg';
+import hoodieImage from '../assets/SBCimages/HOODIES.jpg';
+import pantsImage from '../assets/SBCimages/PANTS.jpg';
+import jacketsImage from '../assets/SBCimages/JACKETS.jpg';
+import accessoriesImage from '../assets/SBCimages/ACESSORIES.jpg';
+
+import { getTshirtImage } from './tshirts';
 
 export const categories: Category[] = [
     {
@@ -39,32 +42,71 @@ export const categories: Category[] = [
 ];
 
 export const products: Product[] = [
+    // =========================
+    // T-SHIRTS
+    // =========================
     {
-        id: 'p1',
+        id: 'tshirt-1',
         name: 'Heavyweight Boxy Fit Tee - Black',
         price: 189.90,
         categorySlug: 't-shirts',
-        image: 'https://placehold.co/600x800/111111/EEEEEE?text=BOXY+TEE',
+        image: getTshirtImage('black-heavyweight-boxy-fit-tee.png'),
+        isNew: false,
+    },
+    {
+        id: 'tshirt-2',
+        name: 'Heavyweight Boxy Fit Tee - Purple Logo',
+        price: 189.90,
+        categorySlug: 't-shirts',
+        image: getTshirtImage('white-oversized-purple-logo-tshirt.jpg'),
+        isNew: false,
+    },
+    {
+        id: 'tshirt-3',
+        name: 'Heavyweight Boxy Fit Tee - Front Writing',
+        price: 189.90,
+        categorySlug: 't-shirts',
+        image: getTshirtImage('front-writted-borded.jpg'),
         isNew: true,
     },
     {
-        id: 'p2',
+        id: 'tshirt-4',
+        name: 'CS BUTTERFLY GRACEFUL - GRAY',
+        price: 189.90,
+        categorySlug: 't-shirts',
+        image: getTshirtImage('CLOTHESHOP-BUTTERFLY-GRACEFUL.jpg'),
+        isNew: false,
+    },
+
+    // =========================
+    // HOODIES
+    // =========================
+    {
+        id: 'hoodie-1',
         name: 'Essential Oversized Hoodie - White',
         price: 349.90,
         categorySlug: 'hoodies',
         image: 'https://placehold.co/600x800/EEEEEE/111111?text=HOODIE',
         isNew: true,
     },
+
+    // =========================
+    // PANTS
+    // =========================
     {
-        id: 'p3',
+        id: 'pants-1',
         name: 'Utility Cargo Pants - Black',
         price: 289.90,
         categorySlug: 'pants',
         image: 'https://placehold.co/600x800/111111/EEEEEE?text=CARGO+PANTS',
         isNew: false,
     },
+
+    // =========================
+    // JACKETS
+    // =========================
     {
-        id: 'p4',
+        id: 'jacket-1',
         name: 'Minimalist Puffer Jacket',
         price: 499.90,
         categorySlug: 'jackets',

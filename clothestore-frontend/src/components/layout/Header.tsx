@@ -1,7 +1,12 @@
 import { Search, User, ShoppingBag, Menu } from 'lucide-react';
 import logo from '../../assets/logo.png';
-
-const navItems = ['HOME', 'SHOP', 'COLLECTIONS', 'ABOUT'];
+import { Link } from 'react-router-dom';
+const navItems = [
+    { label: 'HOME', path: '/' },
+    { label: 'SHOP', path: '/shop' },
+    { label: 'COLLECTIONS', path: '/collections' },
+    { label: 'ABOUT', path: '/about' },
+];
 
 export function Header() {
     return (
@@ -22,35 +27,35 @@ export function Header() {
                     {/* Navegação Desktop */}
                     <nav className="hidden lg:flex items-center gap-8 flex-1">
                         {navItems.map((item) => (
-                            <a
-                                key={item}
-                                href="#"
-                                className="
-                                    relative
-                                    py-2
-                                    text-sm
-                                    font-medium
-                                    text-black
-                                    transition-colors
-                                    duration-300
-                                    hover:text-gray-500
+    <Link
+        key={item.label}
+        to={item.path}
+        className="
+            relative
+            py-2
+            text-sm
+            font-medium
+            text-black
+            transition-colors
+            duration-300
+            hover:text-gray-500
 
-                                    after:absolute
-                                    after:left-0
-                                    after:bottom-0
-                                    after:w-full
-                                    after:h-[1px]
-                                    after:bg-black
-                                    after:origin-left
-                                    after:scale-x-0
-                                    after:transition-transform
-                                    after:duration-300
-                                    hover:after:scale-x-100
-                                "
-                            >
-                                {item}
-                            </a>
-                        ))}
+            after:absolute
+            after:left-0
+            after:bottom-0
+            after:w-full
+            after:h-[1px]
+            after:bg-black
+            after:origin-left
+            after:scale-x-0
+            after:transition-transform
+            after:duration-300
+            hover:after:scale-x-100
+        "
+    >
+        {item.label}
+    </Link>
+))}
                     </nav>
 
                     {/* Logo */}

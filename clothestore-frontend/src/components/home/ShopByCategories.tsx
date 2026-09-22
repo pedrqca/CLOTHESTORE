@@ -1,4 +1,5 @@
 import { categories } from '../../data/mockData';
+import { Link } from 'react-router-dom';
 
 export function ShopByCategories() {
     return (
@@ -19,7 +20,11 @@ export function ShopByCategories() {
                 {/* Categorias */}
                 <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
                     {categories.map((category) => (
-                        <div key={category.id} className="group">
+                        <Link
+                            key={category.id}
+                            to={`/shop/${category.slug}`}
+                            className="group block"
+                        >
                             {/* Imagem + Hover */}
                             <div className="relative overflow-hidden">
                                 <img
@@ -88,10 +93,9 @@ export function ShopByCategories() {
                             >
                                 {category.name}
                             </h3>
-                        </div>
+                        </Link>
                     ))}
                 </div>
-
             </div>
         </section>
     );
