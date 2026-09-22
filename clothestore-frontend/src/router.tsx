@@ -7,6 +7,8 @@ import { Tshirts } from './components/pages/Tshirts';
 import { Hoodies } from './components/pages/Hoodies';
 import { Jackets } from './components/pages/Jackets';
 import { Accessories } from './components/pages/Accessories';
+import Shop from './components/pages/Shop';
+
 export const router = createBrowserRouter([
     {
         element: <Layout />,
@@ -14,6 +16,10 @@ export const router = createBrowserRouter([
             {
                 path: '/',
                 element: <App />,
+            },
+            {
+                path: '/shop',
+                element: <Shop />,
             },
             {
                 path: '/shop/t-shirts',
