@@ -1,14 +1,22 @@
 import type { Category, Product } from '../types';
 
+// Category images
 import tshirtImage from '../assets/SBCimages/TSHIRT.jpg';
 import hoodieImage from '../assets/SBCimages/HOODIES.jpg';
 import pantsImage from '../assets/SBCimages/PANTS.jpg';
 import jacketsImage from '../assets/SBCimages/JACKETS.jpg';
 import accessoriesImage from '../assets/SBCimages/ACESSORIES.jpg';
 
+// Product image loaders
 import { getTshirtImage } from './tshirts';
 import { getHoodieImage } from './hoodies';
 import { getPantsImage } from './pants';
+import { getJacketImage } from './jackets';
+import { getAccessoryImage } from './accesory';
+
+/* =========================================================
+   CATEGORIES
+========================================================= */
 
 export const categories: Category[] = [
     {
@@ -43,10 +51,15 @@ export const categories: Category[] = [
     },
 ];
 
+/* =========================================================
+   PRODUCTS
+========================================================= */
+
 export const products: Product[] = [
-    // =========================
+    // -------------------------------------------------------
     // T-SHIRTS
-    // =========================
+    // -------------------------------------------------------
+
     {
         id: 'tshirt-1',
         name: 'Heavyweight Boxy Fit Tee - Black',
@@ -73,19 +86,20 @@ export const products: Product[] = [
     },
     {
         id: 'tshirt-4',
-        name: 'CS BUTTERFLY GRACEFUL - GRAY',
+        name: 'Butterfly Graceful Tee - Gray',
         price: 189.90,
         categorySlug: 't-shirts',
         image: getTshirtImage('CLOTHESHOP-BUTTERFLY-GRACEFUL.jpg'),
         isNew: false,
     },
 
-    // =========================
+    // -------------------------------------------------------
     // HOODIES
-    // =========================
+    // -------------------------------------------------------
+
     {
         id: 'hoodie-1',
-        name: 'CS - WISH YOU WERE HERE - HOODIE',
+        name: 'Wish You Were Here Hoodie',
         price: 349.90,
         categorySlug: 'hoodies',
         image: getHoodieImage('CS-Wish-You-Were-Here.jpg'),
@@ -93,7 +107,7 @@ export const products: Product[] = [
     },
     {
         id: 'hoodie-2',
-        name: 'CS - SPIDER HOODIE - BLACK',
+        name: 'Spider Hoodie - Black',
         price: 349.90,
         categorySlug: 'hoodies',
         image: getHoodieImage('CS-SPIDER-HOODIE.jpg'),
@@ -101,19 +115,20 @@ export const products: Product[] = [
     },
     {
         id: 'hoodie-3',
-        name: 'CS - TOPPER HOODIE - BLUE',
+        name: 'Topper Hoodie - Blue',
         price: 349.90,
         categorySlug: 'hoodies',
         image: getHoodieImage('CS-BLUE-HOODIE.jpg'),
         isNew: true,
     },
 
-    // =========================
+    // -------------------------------------------------------
     // PANTS
-    // =========================
+    // -------------------------------------------------------
+
     {
         id: 'pants-1',
-        name: 'CS - JOGGER PANTS - BLACK',
+        name: 'Jogger Pants - Black',
         price: 250.90,
         categorySlug: 'pants',
         image: getPantsImage('CS - Jogger Pants - Black.jpg'),
@@ -121,7 +136,7 @@ export const products: Product[] = [
     },
     {
         id: 'pants-2',
-        name: 'CS - HOODIE PANTS - DARK - WHITE',
+        name: 'Hoodie Pants - Dark White',
         price: 250.90,
         categorySlug: 'pants',
         image: getPantsImage('CS-HOODIE-PANTS-DARK-WHITE.jpg'),
@@ -129,22 +144,36 @@ export const products: Product[] = [
     },
     {
         id: 'pants-3',
-        name: 'CS - BLUE FLAMES - BLACK',
+        name: 'Blue Flames Pants - Black',
         price: 250.90,
         categorySlug: 'pants',
         image: getPantsImage('CS-BLUEFLAMES-BLACK.jpg'),
         isNew: true,
     },
 
-    // =========================
+    // -------------------------------------------------------
     // JACKETS
-    // =========================
+    // -------------------------------------------------------
+
     {
         id: 'jacket-1',
-        name: 'Minimalist Puffer Jacket',
+        name: 'Minimalist Puffer Jacket - White',
         price: 499.90,
         categorySlug: 'jackets',
-        image: 'https://placehold.co/600x800/111111/EEEEEE?text=PUFFER',
+        image: getJacketImage('CS-Minimalist-Puffer-Jacket-White.jpg'),
+        isNew: true,
+    },
+
+    // -------------------------------------------------------
+    // ACCESSORIES
+    // -------------------------------------------------------
+
+    {
+        id: 'accessory-1',
+        name: 'Beanie - Black',
+        price: 49.90,
+        categorySlug: 'accessories',
+        image: getAccessoryImage('CS-BEANIE-BLACK.jpg'),
         isNew: true,
     },
 ];

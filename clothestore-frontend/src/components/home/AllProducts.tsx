@@ -1,98 +1,93 @@
-import { products } from '../../data/mockData';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Search } from 'lucide-react';
 
-export function Pants() {
-    const pants = products.filter(
-        (product) => product.categorySlug === 'pants'
+import { products } from '../../data/mockData';
+
+export function AllProducts() {
+    const [search, setSearch] = useState('');
+
+    const filteredProducts = products.filter((product) =>
+        product.name.toLowerCase().includes(search.toLowerCase())
     );
 
     return (
-        <main className="min-h-screen bg-white">
-            {/* Header da categoria */}
-            <motion.section
-                className="border-b border-gray-100"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: 'easeOut' }}
-            >
-                <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-12 sm:py-16">
-                    <div className="mb-8">
-                        <div className="flex items-center gap-2 font-outfit text-xs uppercase tracking-[0.2em] text-gray-400">
-                            <Link
-                                to="/"
-                                className="transition-colors hover:text-black"
-                            >
-                                Home
-                            </Link>
+        <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-16 sm:py-20">
 
-                            <span>/</span>
+            {/* Header */}
+            <div className="flex flex-col gap-8 mb-12">
 
-                            <span>Shop</span>
-
-                            <span>/</span>
-
-                            <span className="text-gray-500">
-                                Pants
-                            </span>
-                        </div>
-                    </div>
-
-                    <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-                        <div>
-                            <h1 className="font-outfit text-4xl sm:text-5xl lg:text-6xl font-semibold uppercase tracking-tight">
-                                Pants
-                            </h1>
-
-                            <p className="font-outfit text-sm sm:text-base text-gray-500 mt-4 max-w-xl">
-                                Designed for everyday movement, comfort and style.
-                            </p>
-                        </div>
-
-                        <p className="font-outfit text-sm text-gray-500">
-                            {pants.length} products
-                        </p>
-                    </div>
-                </div>
-            </motion.section>
-
-            {/* Produtos */}
-            <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-12">
-                <div className="flex items-center justify-between mb-8">
-                    <p className="font-outfit text-sm text-gray-500">
-                        Pants
+                <div>
+                    <p className="font-outfit text-xs uppercase tracking-[0.2em] text-gray-400 mb-4">
+                        Shop
                     </p>
 
-                    <button
-                        className="
-                            font-outfit
-                            text-sm
-                            uppercase
-                            tracking-wider
-                            text-black
-                            hover:text-gray-500
-                            transition-colors
-                        "
-                    >
-                        Sort by
-                    </button>
+                    <h2 className="font-outfit text-4xl sm:text-5xl lg:text-6xl font-semibold uppercase tracking-tight">
+                        All Products
+                    </h2>
                 </div>
 
+                {/* Search */}
+                <div className="relative w-full max-w-md">
+                    <Search
+                        size={18}
+                        strokeWidth={1.5}
+                        className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
+                    />
+
+                    <input
+                        type="text"
+                        value={search}
+                        onChange={(event) => setSearch(event.target.value)}
+                        placeholder="Search products..."
+                        className="
+                            w-full
+                            h-12
+                            pl-11
+                            pr-4
+                            border
+                            border-gray-200
+                            bg-white
+                            font-outfit
+                            text-sm
+                            text-black
+                            outline-none
+                            transition-colors
+                            placeholder:text-gray-400
+                            focus:border-black
+                        "
+                    />
+                </div>
+
+            </div>
+
+            {/* Result count */}
+            <div className="mb-8">
+                <p className="font-outfit text-sm text-gray-500">
+                    {filteredProducts.length} products
+                </p>
+            </div>
+
+            {/* Products */}
+            {filteredProducts.length > 0 ? (
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-10">
-                    {pants.map((product, index) => (
+
+                    {filteredProducts.map((product, index) => (
                         <motion.article
                             key={product.id}
                             className="group"
                             initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, amount: 0.2 }}
+                            animate={{ opacity: 1, y: 0 }}
                             transition={{
                                 duration: 0.6,
                                 delay: index * 0.08,
                                 ease: 'easeOut',
                             }}
                         >
+
+                            {/* Image */}
                             <div className="relative overflow-hidden bg-gray-100">
+
                                 <img
                                     src={product.image}
                                     alt={product.name}
@@ -106,6 +101,7 @@ export function Pants() {
                                     "
                                 />
 
+                                {/* New badge */}
                                 {product.isNew && (
                                     <span
                                         className="
@@ -125,10 +121,13 @@ export function Pants() {
                                         New
                                     </span>
                                 )}
+
                             </div>
 
+                            {/* Product info */}
                             <div className="mt-4">
-                                <h2
+
+                                <h3
                                     className="
                                         font-outfit
                                         text-sm
@@ -139,16 +138,28 @@ export function Pants() {
                                     "
                                 >
                                     {product.name}
-                                </h2>
+                                </h3>
 
                                 <p className="font-outfit text-sm text-gray-500 mt-2">
                                     R$ {product.price.toFixed(2).replace('.', ',')}
                                 </p>
+
                             </div>
+
                         </motion.article>
                     ))}
+
                 </div>
-            </section>
-        </main>
+            ) : (
+                <div className="py-20 text-center">
+                    <p className="font-outfit text-sm text-gray-500">
+                        No products found.
+                    </p>
+                </div>
+            )}
+
+        </section>
     );
 }
+
+export default AllProducts;

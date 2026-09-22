@@ -1,24 +1,32 @@
-import { products } from '../../data/mockData';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
-export function Pants() {
-    const pants = products.filter(
-        (product) => product.categorySlug === 'pants'
+import { products } from '../../data/mockData';
+
+export function Jackets() {
+    const jackets = products.filter(
+        (product) => product.categorySlug === 'jackets'
     );
 
     return (
         <main className="min-h-screen bg-white">
-            {/* Header da categoria */}
+
+            {/* Header da página */}
             <motion.section
                 className="border-b border-gray-100"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: 'easeOut' }}
+                transition={{
+                    duration: 0.6,
+                    ease: 'easeOut',
+                }}
             >
                 <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-12 sm:py-16">
+
+                    {/* Breadcrumb */}
                     <div className="mb-8">
                         <div className="flex items-center gap-2 font-outfit text-xs uppercase tracking-[0.2em] text-gray-400">
+
                             <Link
                                 to="/"
                                 className="transition-colors hover:text-black"
@@ -33,34 +41,49 @@ export function Pants() {
                             <span>/</span>
 
                             <span className="text-gray-500">
-                                Pants
+                                Jackets
                             </span>
+
                         </div>
                     </div>
 
+                    {/* Título */}
                     <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+
                         <div>
                             <h1 className="font-outfit text-4xl sm:text-5xl lg:text-6xl font-semibold uppercase tracking-tight">
-                                Pants
+                                Jackets
                             </h1>
 
                             <p className="font-outfit text-sm sm:text-base text-gray-500 mt-4 max-w-xl">
-                                Designed for everyday movement, comfort and style.
+                                Layered essentials designed for comfort, movement and style.
                             </p>
                         </div>
 
                         <p className="font-outfit text-sm text-gray-500">
-                            {pants.length} products
+                            {jackets.length} products
                         </p>
+
                     </div>
                 </div>
             </motion.section>
 
             {/* Produtos */}
             <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-12">
-                <div className="flex items-center justify-between mb-8">
+
+                {/* Barra de controles */}
+                <motion.div
+                    className="flex items-center justify-between mb-8"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                        duration: 0.5,
+                        delay: 0.15,
+                        ease: 'easeOut',
+                    }}
+                >
                     <p className="font-outfit text-sm text-gray-500">
-                        Pants
+                        Jackets
                     </p>
 
                     <button
@@ -76,23 +99,38 @@ export function Pants() {
                     >
                         Sort by
                     </button>
-                </div>
 
+                </motion.div>
+
+                {/* Grid */}
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-10">
-                    {pants.map((product, index) => (
+
+                    {jackets.map((product, index) => (
                         <motion.article
                             key={product.id}
                             className="group"
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, amount: 0.2 }}
+                            initial={{
+                                opacity: 0,
+                                y: 30,
+                            }}
+                            whileInView={{
+                                opacity: 1,
+                                y: 0,
+                            }}
+                            viewport={{
+                                once: true,
+                                amount: 0.2,
+                            }}
                             transition={{
                                 duration: 0.6,
                                 delay: index * 0.08,
                                 ease: 'easeOut',
                             }}
                         >
+
+                            {/* Imagem */}
                             <div className="relative overflow-hidden bg-gray-100">
+
                                 <img
                                     src={product.image}
                                     alt={product.name}
@@ -106,6 +144,7 @@ export function Pants() {
                                     "
                                 />
 
+                                {/* Badge */}
                                 {product.isNew && (
                                     <span
                                         className="
@@ -125,9 +164,12 @@ export function Pants() {
                                         New
                                     </span>
                                 )}
+
                             </div>
 
+                            {/* Informações */}
                             <div className="mt-4">
+
                                 <h2
                                     className="
                                         font-outfit
@@ -144,11 +186,17 @@ export function Pants() {
                                 <p className="font-outfit text-sm text-gray-500 mt-2">
                                     R$ {product.price.toFixed(2).replace('.', ',')}
                                 </p>
+
                             </div>
+
                         </motion.article>
                     ))}
+
                 </div>
             </section>
+
         </main>
     );
 }
+
+export default Jackets;

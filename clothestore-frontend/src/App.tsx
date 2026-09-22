@@ -1,17 +1,16 @@
-import { lazy, Suspense } from 'react';
-
-const Hero = lazy(() => import('./components/layout/Hero'));
-const ShopByCategories = lazy(
-  () => import('./components/home/ShopByCategories')
-);
+import Hero from './components/layout/Hero';
+import ShopByCategories from './components/home/ShopByCategories';
+import MarqueeBanner from './components/home/MarqueeBanner';
+import AllProducts from './components/home/AllProducts';
 
 export function App() {
   return (
     <>
-      <Suspense fallback={null}>
-        <Hero />
-        <ShopByCategories />
-      </Suspense>
+      <Hero />
+      <MarqueeBanner />
+      <ShopByCategories />
+      <MarqueeBanner />
+      <AllProducts />
     </>
   );
 }

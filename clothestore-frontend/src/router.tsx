@@ -5,7 +5,8 @@ import { Layout } from './components/layout/Layout';
 import { Pants } from './components/pages/Pants';
 import { Tshirts } from './components/pages/Tshirts';
 import { Hoodies } from './components/pages/Hoodies';
-
+import { Jackets } from './components/pages/Jackets';
+import { Accessories } from './components/pages/Accessories';
 export const router = createBrowserRouter([
     {
         element: <Layout />,
@@ -25,6 +26,14 @@ export const router = createBrowserRouter([
             {
                 path: '/shop/pants',
                 element: <Pants />,
+            },
+            {
+                path: '/shop/jackets',
+                element: <Jackets />,
+            },
+            {
+                path: '/shop/accessories',
+                element: <Accessories />,
             },
         ],
     },
