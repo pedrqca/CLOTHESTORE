@@ -1,3 +1,6 @@
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+
 import { products } from '../../data/mockData';
 
 export function Tshirts() {
@@ -9,14 +12,37 @@ export function Tshirts() {
         <main className="min-h-screen bg-white">
 
             {/* Header da página */}
-            <section className="border-b border-gray-100">
+            <motion.section
+                className="border-b border-gray-100"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                    duration: 0.6,
+                    ease: 'easeOut',
+                }}
+            >
                 <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-12 sm:py-16">
 
                     {/* Breadcrumb */}
                     <div className="mb-8">
-                        <p className="font-outfit text-xs uppercase tracking-[0.2em] text-gray-400">
-                            Home / Shop / T-Shirts
-                        </p>
+                        <div className="flex items-center gap-2 font-outfit text-xs uppercase tracking-[0.2em] text-gray-400">
+                            <Link
+                                to="/"
+                                className="transition-colors hover:text-black"
+                            >
+                                Home
+                            </Link>
+
+                            <span>/</span>
+
+                            <span>Shop</span>
+
+                            <span>/</span>
+
+                            <span className="text-gray-500">
+                                T-Shirts
+                            </span>
+                        </div>
                     </div>
 
                     {/* Título */}
@@ -38,14 +64,22 @@ export function Tshirts() {
 
                     </div>
                 </div>
-            </section>
+            </motion.section>
 
             {/* Produtos */}
             <section className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-12">
 
                 {/* Barra de controles */}
-                <div className="flex items-center justify-between mb-8">
-
+                <motion.div
+                    className="flex items-center justify-between mb-8"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                        duration: 0.5,
+                        delay: 0.15,
+                        ease: 'easeOut',
+                    }}
+                >
                     <p className="font-outfit text-sm text-gray-500">
                         T-Shirts
                     </p>
@@ -63,14 +97,33 @@ export function Tshirts() {
                     >
                         Sort by
                     </button>
-
-                </div>
+                </motion.div>
 
                 {/* Grid */}
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-10">
 
-                    {tshirts.map((product) => (
-                        <article key={product.id} className="group">
+                    {tshirts.map((product, index) => (
+                        <motion.article
+                            key={product.id}
+                            className="group"
+                            initial={{
+                                opacity: 0,
+                                y: 30,
+                            }}
+                            whileInView={{
+                                opacity: 1,
+                                y: 0,
+                            }}
+                            viewport={{
+                                once: true,
+                                amount: 0.2,
+                            }}
+                            transition={{
+                                duration: 0.6,
+                                delay: index * 0.08,
+                                ease: 'easeOut',
+                            }}
+                        >
 
                             {/* Imagem */}
                             <div className="relative overflow-hidden bg-gray-100">
@@ -133,7 +186,7 @@ export function Tshirts() {
 
                             </div>
 
-                        </article>
+                        </motion.article>
                     ))}
 
                 </div>
@@ -142,3 +195,5 @@ export function Tshirts() {
         </main>
     );
 }
+
+export default Tshirts;

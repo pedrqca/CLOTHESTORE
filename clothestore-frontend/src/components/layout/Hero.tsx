@@ -1,19 +1,71 @@
-import heroImage from '../../assets/CLOTHESTORE-HEADER.jpg';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
-export function Hero() {
+import heroImage from '../../assets/CLOTHESTORE-HEADER.jpg';
+import heroImage2 from '../../assets/CLOTHESTORE-HEADER-2.jpg';
+import heroImage3 from '../../assets/CLOTHESTORE-HEADER-3.jpg';
+
+const heroImages = [
+    heroImage,
+    heroImage2,
+    heroImage3,
+];
+
+export default function Hero() {
+    const [currentImage, setCurrentImage] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentImage((prev) => (prev + 1) % heroImages.length);
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, []);
+
     return (
         <section
             className="
                 relative
                 w-full
                 min-h-[calc(100vh-112px)]
-                bg-cover
-                bg-center
-                bg-no-repeat
+                overflow-hidden
+                bg-black
             "
-            style={{ backgroundImage: `url(${heroImage})` }}
         >
-            {/* Overlay sutil */}
+            {/* Imagem */}
+            <AnimatePresence mode="sync">
+                <motion.div
+                    key={currentImage}
+                    className="
+                        absolute
+                        inset-0
+                        bg-cover
+                        bg-center
+                        bg-no-repeat
+                    "
+                    style={{
+                        backgroundImage: `url(${heroImages[currentImage]})`,
+                    }}
+                    initial={{
+                        opacity: 0,
+                        scale: 1.08,
+                    }}
+                    animate={{
+                        opacity: 1,
+                        scale: 1,
+                    }}
+                    exit={{
+                        opacity: 0,
+                        scale: 0.98,
+                    }}
+                    transition={{
+                        duration: 1.2,
+                        ease: [0.22, 1, 0.36, 1],
+                    }}
+                />
+            </AnimatePresence>
+
+            {/* Overlay */}
             <div className="absolute inset-0 bg-black/10" />
 
             {/* Conteúdo */}
@@ -117,6 +169,37 @@ export function Hero() {
                         </button>
                     </div>
                 </div>
+            </div>
+
+            {/* Indicadores */}
+            <div
+                className="
+                    absolute
+                    bottom-8
+                    left-1/2
+                    -translate-x-1/2
+                    z-20
+                    flex
+                    items-center
+                    gap-2
+                "
+            >
+                {heroImages.map((_, index) => (
+                    <button
+                        key={index}
+                        onClick={() => setCurrentImage(index)}
+                        aria-label={`Ir para imagem ${index + 1}`}
+                        className={`
+                            h-[2px]
+                            transition-all
+                            duration-500
+                            ${index === currentImage
+                                ? 'w-10 bg-white'
+                                : 'w-5 bg-white/40'
+                            }
+                        `}
+                    />
+                ))}
             </div>
         </section>
     );

@@ -7,6 +7,8 @@ import jacketsImage from '../assets/SBCimages/JACKETS.jpg';
 import accessoriesImage from '../assets/SBCimages/ACESSORIES.jpg';
 
 import { getTshirtImage } from './tshirts';
+import { getHoodieImage } from './hoodies';
+import { getPantsImage } from './pants';
 
 export const categories: Category[] = [
     {
@@ -83,10 +85,26 @@ export const products: Product[] = [
     // =========================
     {
         id: 'hoodie-1',
-        name: 'Essential Oversized Hoodie - White',
+        name: 'CS - WISH YOU WERE HERE - HOODIE',
         price: 349.90,
         categorySlug: 'hoodies',
-        image: 'https://placehold.co/600x800/EEEEEE/111111?text=HOODIE',
+        image: getHoodieImage('CS-Wish-You-Were-Here.jpg'),
+        isNew: true,
+    },
+    {
+        id: 'hoodie-2',
+        name: 'CS - SPIDER HOODIE - BLACK',
+        price: 349.90,
+        categorySlug: 'hoodies',
+        image: getHoodieImage('CS-SPIDER-HOODIE.jpg'),
+        isNew: true,
+    },
+    {
+        id: 'hoodie-3',
+        name: 'CS - TOPPER HOODIE - BLUE',
+        price: 349.90,
+        categorySlug: 'hoodies',
+        image: getHoodieImage('CS-BLUE-HOODIE.jpg'),
         isNew: true,
     },
 
@@ -95,11 +113,27 @@ export const products: Product[] = [
     // =========================
     {
         id: 'pants-1',
-        name: 'Utility Cargo Pants - Black',
-        price: 289.90,
+        name: 'CS - JOGGER PANTS - BLACK',
+        price: 250.90,
         categorySlug: 'pants',
-        image: 'https://placehold.co/600x800/111111/EEEEEE?text=CARGO+PANTS',
-        isNew: false,
+        image: getPantsImage('CS - Jogger Pants - Black.jpg'),
+        isNew: true,
+    },
+    {
+        id: 'pants-2',
+        name: 'CS - HOODIE PANTS - DARK - WHITE',
+        price: 250.90,
+        categorySlug: 'pants',
+        image: getPantsImage('CS-HOODIE-PANTS-DARK-WHITE.jpg'),
+        isNew: true,
+    },
+    {
+        id: 'pants-3',
+        name: 'CS - BLUE FLAMES - BLACK',
+        price: 250.90,
+        categorySlug: 'pants',
+        image: getPantsImage('CS-BLUEFLAMES-BLACK.jpg'),
+        isNew: true,
     },
 
     // =========================
