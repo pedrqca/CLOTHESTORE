@@ -1,6 +1,10 @@
 import Fastify from 'fastify';
 
+import { productsRoutes } from './routes/products.js';
+
 const app = Fastify();
+
+await app.register(productsRoutes);
 
 app.get('/health', async () => {
     return {
