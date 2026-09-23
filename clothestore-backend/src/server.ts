@@ -1,8 +1,13 @@
 import Fastify from 'fastify';
+import cors from '@fastify/cors';
 
 import { productsRoutes } from './routes/products.js';
 
 const app = Fastify();
+
+await app.register(cors, {
+    origin: 'http://localhost:5173',
+});
 
 await app.register(productsRoutes);
 
