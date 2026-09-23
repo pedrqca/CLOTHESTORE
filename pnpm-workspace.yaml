@@ -1,0 +1,6 @@
+allowBuilds:
+  esbuild: false
+  
+packages:
+  - "clothestore-frontend"
+  - "clothestore-backend"
