@@ -10,7 +10,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import logo from '../../assets/logo.png';
 import { getProducts } from '../../services/api';
-import { getProductImage } from '../../utils/getProductImage';
+import { getProductImage } from '../../services/productImage';
 import type { Product } from '../../types';
 
 const navItems = [
