@@ -6,10 +6,10 @@ export interface Category {
 }
 
 export interface Product {
-    id: string;
+    id: number;
     name: string;
     price: number;
     categorySlug: string;
     image: string;
-    isNew?: boolean;
+    isNew: boolean;
 }

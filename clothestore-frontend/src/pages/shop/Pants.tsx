@@ -2,17 +2,12 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
+import type { Product } from '../../types';
+
 import { getProducts } from '../../services/api';
 import { getProductImage } from '../../services/productImage';
 
-type Product = {
-    id: number;
-    name: string;
-    price: number;
-    image: string;
-    isNew: boolean;
-    categorySlug: string;
-};
+
 
 export function Pants() {
     const [products, setProducts] = useState<Product[]>([]);
