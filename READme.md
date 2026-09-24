@@ -407,7 +407,7 @@ Future features will be added on top of this foundation.
 Computer Engineering student focused on software development and full-stack applications.
 
 - GitHub: [@pedrqca](https://github.com/pedrqca)
-- LinkedIn: [Pedro Henrique](https://www.linkedin.com/pedrqca)
+- LinkedIn: [Pedro Henrique](https://www.linkedin.com/in/pedrqca/)
 
 ---
 
