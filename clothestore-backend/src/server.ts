@@ -19,11 +19,14 @@ app.get('/health', async () => {
 
 const start = async () => {
     try {
+        const port = Number(process.env.PORT) || 3333;
+
         await app.listen({
-            port: 3333,
+            port,
+            host: '0.0.0.0',
         });
 
-        console.log('🚀 API running on http://localhost:3333');
+        console.log(`🚀 API running on http://localhost:${port}`);
     } catch (error) {
         app.log.error(error);
         process.exit(1);
