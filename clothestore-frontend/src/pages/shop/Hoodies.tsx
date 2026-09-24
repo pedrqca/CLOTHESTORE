@@ -1,9 +1,30 @@
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
-import { products } from '../../data/mockData';
+import { getProducts } from '../../services/api';
+import { getProductImage } from '../../services/productImage';
+
+type Product = {
+    id: number;
+    name: string;
+    price: number;
+    image: string;
+    isNew: boolean;
+    categorySlug: string;
+};
 
 export function Hoodies() {
+    const [products, setProducts] = useState<Product[]>([]);
+
+    useEffect(() => {
+        getProducts()
+            .then(setProducts)
+            .catch((error) => {
+                console.error('Erro ao buscar produtos:', error);
+            });
+    }, []);
+
     const hoodies = products.filter(
         (product) => product.categorySlug === 'hoodies'
     );
@@ -129,7 +150,10 @@ export function Hoodies() {
                             <div className="relative overflow-hidden bg-gray-100">
 
                                 <img
-                                    src={product.image}
+                                    src={getProductImage(
+                                        product.categorySlug,
+                                        product.image
+                                    )}
                                     alt={product.name}
                                     className="
                                         w-full
@@ -181,7 +205,7 @@ export function Hoodies() {
                                 </h2>
 
                                 <p className="font-outfit text-sm text-gray-500 mt-2">
-                                    R$ {product.price.toFixed(2).replace('.', ',')}
+                                    R$ {(product.price / 100).toFixed(2).replace('.', ',')}
                                 </p>
 
                             </div>
