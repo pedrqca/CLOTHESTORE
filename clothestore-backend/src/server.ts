@@ -5,8 +5,11 @@ import { productsRoutes } from './routes/products.js';
 
 const app = Fastify();
 
+const frontendUrl =
+    process.env.FRONTEND_URL || 'http://localhost:5173';
+
 await app.register(cors, {
-    origin: 'http://localhost:5173',
+    origin: frontendUrl,
 });
 
 await app.register(productsRoutes);
