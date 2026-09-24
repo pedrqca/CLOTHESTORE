@@ -9,7 +9,9 @@ import {
 import { Link, useNavigate } from 'react-router-dom';
 
 import logo from '../../assets/logo.png';
-import { products } from '../../data/mockData';
+import { getProducts } from '../../services/api';
+import { getProductImage } from '../../utils/getProductImage';
+import type { Product } from '../../types';
 
 const navItems = [
     { label: 'HOME', path: '/' },
@@ -20,9 +22,18 @@ const navItems = [
 export function Header() {
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [search, setSearch] = useState('');
+    const [products, setProducts] = useState<Product[]>([]);
 
     const searchRef = useRef<HTMLDivElement>(null);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        getProducts()
+            .then(setProducts)
+            .catch((error) => {
+                console.error('Failed to load products:', error);
+            });
+    }, []);
 
     const filteredProducts =
         search.trim().length > 0
@@ -263,12 +274,11 @@ export function Header() {
                                                                     >
                                                                         <div className="w-16 h-20 flex-shrink-0 overflow-hidden bg-gray-100">
                                                                             <img
-                                                                                src={
+                                                                                src={getProductImage(
+                                                                                    product.categorySlug,
                                                                                     product.image
-                                                                                }
-                                                                                alt={
-                                                                                    product.name
-                                                                                }
+                                                                                )}
+                                                                                alt={product.name}
                                                                                 className="
                                                                                     w-full
                                                                                     h-full
