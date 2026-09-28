@@ -38,12 +38,12 @@ export function Header() {
     const filteredProducts =
         search.trim().length > 0
             ? products
-                .filter((product) =>
-                    product.name
-                        .toLowerCase()
-                        .includes(search.toLowerCase())
-                )
-                .slice(0, 4)
+                  .filter((product) =>
+                      product.name
+                          .toLowerCase()
+                          .startsWith(search.trim().toLowerCase())
+                  )
+                  .slice(0, 4)
             : [];
 
     const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
@@ -55,7 +55,7 @@ export function Header() {
             return;
         }
 
-        navigate(`/shop?search=${encodeURIComponent(query)}`);
+        navigate(`/ shop ? search = ${ encodeURIComponent(query) } `);
         setIsSearchOpen(false);
     };
 
@@ -66,7 +66,7 @@ export function Header() {
             return;
         }
 
-        navigate(`/shop?search=${encodeURIComponent(query)}`);
+        navigate(`/ shop ? search = ${ encodeURIComponent(query) } `);
         setIsSearchOpen(false);
     };
 
@@ -253,10 +253,13 @@ export function Header() {
                                                                         type="button"
                                                                         onClick={() => {
                                                                             navigate(
-                                                                                `/shop?search=${encodeURIComponent(
-                                                                                    product.name
-                                                                                )}`
+                                                                                `/ shop ? search = ${
+    encodeURIComponent(
+        product.name
+    )
+} `
                                                                             );
+
                                                                             setIsSearchOpen(
                                                                                 false
                                                                             );
@@ -307,12 +310,14 @@ export function Header() {
                                                                                 }
                                                                             </p>
 
+                                                                            {/* Preço */}
                                                                             <p className="mt-2 font-outfit text-xs text-gray-500">
                                                                                 R${' '}
-                                                                                {product.price
-                                                                                    .toFixed(
-                                                                                        2
-                                                                                    )
+                                                                                {(
+                                                                                    product.price /
+                                                                                    100
+                                                                                )
+                                                                                    .toFixed(2)
                                                                                     .replace(
                                                                                         '.',
                                                                                         ','
@@ -326,9 +331,7 @@ export function Header() {
 
                                                         <button
                                                             type="button"
-                                                            onClick={
-                                                                handleViewAll
-                                                            }
+                                                            onClick={handleViewAll}
                                                             className="
                                                                 mt-6
                                                                 font-outfit
@@ -411,3 +414,4 @@ export function Header() {
 }
 
 export default Header;
+
